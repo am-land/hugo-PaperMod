@@ -36,7 +36,10 @@
 {{- partial "home_info.html" . }}
 {{- end }}
 
+{{- $isThumbnail := default false (eq (.Param "cover.thumbnailInList") true) -}}
+{{- $isHidden := default false (.Site.Params.cover.hidden | default .Site.Params.cover.hiddenInList) }}
 {{- $term := .Data.Term }}
+
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -49,27 +52,32 @@
 {{- end }}
 
 <article class="{{ $class }}">
-  {{- $isHidden := (.Site.Params.cover.hidden | default .Site.Params.cover.hiddenInList) }}
-  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2>
-      {{- .Title }}
-      {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
-    </h2>
-  </header>
+  {{- $isEntryHidden := default $isHidden (.Params.cover.hidden | default .Params.cover.hiddenInList) }}
+  {{- $isEntryThumbnail := (default $isThumbnail (.Param "cover.thumbnailInList")) -}}
+  <div class="entry-main">
+  {{- partial "cover.html" (dict "cxt" . "IsHome" $.IsHome "isHidden" $isEntryHidden "isThumbnail" $isEntryThumbnail ) }}
+    <div class="entry-item">
+      <header class="entry-header">
+        <h2>
+          {{- .Title }}
+            {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+        </h2>
+      </header>
   {{- if (ne (.Param "hideSummary") true) }}
-  <section class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </section>
+      <section class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+      </section>
   {{- end }}
   {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
+      <footer class="entry-footer">
     {{- partial "post_meta.html" . -}}
-  </footer>
+      </footer>
   {{- end }}
+    </div>
+  </div>
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
-{{- end }}
+{{- end -}}
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">

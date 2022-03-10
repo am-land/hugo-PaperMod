@@ -36,6 +36,7 @@
 .post-entry {
     position: relative;
     margin-bottom: var(--gap);
+    max-height: max-content;
     padding: var(--gap);
     background: var(--entry);
     border-radius: var(--radius);
@@ -47,8 +48,12 @@
     transform: scale(0.96);
 }
 
-.tag-entry .entry-cover {
+.tag-entry .entry-cover:not(.show-tag-cover) {
     display: none;
+}
+
+.entry-header {
+    display: block;
 }
 
 .entry-header h2 {
@@ -88,17 +93,141 @@
 
 .entry-cover {
     margin-bottom: var(--gap);
+    margin-top: var(--gap);
     text-align: center;
 }
 
 .entry-cover img {
     border-radius: var(--radius);
-    pointer-events: none;
-    width: 100%;
+    display: block;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+    pointer-events: none;
+    width: auto;
+}
+
+.entry-cover svg {
+    display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    pointer-events: none;
+    width: auto;
 }
 
 .entry-cover a {
     color: var(--secondary);
     box-shadow: 0 1px 0 var(--primary);
+    text-align: center;
+}
+
+.entry-item {
+    margin-top: .6rem;
+}
+
+.entry-main {
+    display: block;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .entry-main {
+        height: max-content;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail {
+        display: inline-block;
+        height: 100%;
+        margin-bottom: auto;
+        margin-right: .6em;
+        margin-top: auto;
+        width: 10%;
+        vertical-align: middle;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail ~ .entry-item {
+        display: inline-block;
+        height: max-content;
+        margin-top: unset;
+        margin-bottom: unset;
+        max-width: 89%;
+        vertical-align: middle;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail ~ .entry-item .entry-header {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail ~ .entry-item .entry-header h2 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail img {
+        display: block;
+        height: auto;
+        margin: auto;
+        max-height: 3.8rem;
+        max-width: 100%;
+        width: auto;
+    }
+
+    .entry-main .entry-cover.entry-cover-thumbnail svg {
+        display: block;
+        height: auto;
+        margin: auto;
+        max-height: 4rem;
+        max-width: 100%;
+        width: auto;
+    }
+
+    .entry-item .entry-footer {
+        margin-top: 0;
+    }
+
+    .entry-footer {
+        font-style: italic;
+    }
+
+    .entry-content {
+        margin: 0;
+    }
+}
+
+.fit-width img,
+.fit-width svg {
+    height: auto;
+    width: 100%;
+}
+
+.fit-height img,
+.fit-height svg {
+    height: max-content;
+    width: auto;
+}
+
+.entry-cover.fit-width img,
+.entry-cover.fit-width svg {
+    max-height: unset;
+}
+
+.entry-cover.fit-height img,
+.entry-cover.fit-height svg {
+    max-height: unset;
+    min-height: fit-content;
+}
+
+.entry-main .entry-cover.entry-cover-thumbnail.fit-width img,
+.entry-main .entry-cover.entry-cover-thumbnail.fit-width svg {
+    max-height: 4em;
+    min-height: fit-content;
+}
+
+.entry-main .entry-cover.entry-cover-thumbnail.fit-height img,
+.entry-main .entry-cover.entry-cover-thumbnail.fit-height svg {
+    min-height: 100%;
 }
