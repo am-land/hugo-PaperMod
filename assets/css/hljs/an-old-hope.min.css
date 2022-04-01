@@ -1,8 +1,8 @@
 .hljs-comment,
 .hljs-quote {
-    color: #b6b18b;
-}
 
+}
+/*
 .hljs-deletion,
 .hljs-name,
 .hljs-regexp,
@@ -45,7 +45,7 @@
 .hljs-selector-tag {
     color: #b45ea4;
 }
-
+*/
 .hljs {
     display: block;
     overflow-x: auto;
