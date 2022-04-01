@@ -2,14 +2,14 @@
 
 /* @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700); */
 
-body { background: #F5F5F5; }
-form { max-width:720px; margin:50px auto; }
+body { background: #E9E9E9; }
+form { width: 100%; margin:50px auto; }
 
 .feedback-input {
   color: var(--primary);
  /* font-family: Helvetica, Arial, sans-serif; */
   font-weight:500px;
-  font-size: 18px;
+  font-size: 17px;
   border-radius: var(--radius);
   line-height: 22px;
   background-color: transparent;
