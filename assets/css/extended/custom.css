@@ -7,6 +7,6 @@
 
 }
 
-.list {
+body {
     background: var(--entry);
-    }
+}
