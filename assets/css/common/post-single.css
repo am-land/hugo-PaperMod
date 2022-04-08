@@ -135,25 +135,24 @@
 .post-content table th,
 .post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
     min-width: 80px;
-    padding: 12px 8px;
-    line-height: 1.5;
-    border: 2px solid var(--tertiary);
+    padding: 8px 8px;
+    line-height: 1;
+    border: 2px solid var(--quinary);
 }
 
-.post-content table tr:nth-child(odd){
+/*.post-content table tr:nth-child(odd){
     background-color: var(--code-bg);
-}
+}*/
 
 .post-content table tr:hover{
-    background-color: #017175;
-    color: white;
+    background-color: var(--code-bg);
 }
 .post-content table th {
-    font-size: 17px;
+    font-size: 18px;
     text-align: start;
-    background-color: #03989E;
-    color: var(--theme);
+    background-color: var(--tertiary);
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 
@@ -320,6 +319,7 @@
     margin-bottom: 5px;
 }
 
+
 .post-tags a,
 .share-buttons,
 .paginav {
@@ -342,6 +342,7 @@
 .paginav a:hover {
     background: var(--border);
 }
+
 
 .share-buttons {
     margin: 14px 0;
