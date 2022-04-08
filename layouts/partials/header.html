@@ -116,6 +116,10 @@
                 </a>
             </li>
             {{- end }}
+     {{ range .AlternativeOutputFormats -}}
+            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+            {{ end -}}
+
         </ul>
     </nav>
 </header>
